@@ -25,9 +25,9 @@ function App() {
   }, []);
 
   return (
-    <div className='App'>
+    <>
       <MovieList movies={movies} />
-    </div>
+    </>
   );
 }
 
