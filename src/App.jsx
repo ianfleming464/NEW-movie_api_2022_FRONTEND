@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react';
 import MovieList from './components/Movies/MovieList';
+import MovieView from './components/Movies/MovieView';
 
 function App() {
   const [movies, setMovies] = useState([]);
+  const [selectedMovie, setSelectedMovie] = useState('');
 
   useEffect(() => {
     const fetchMovies = async () => {
       const response = await fetch('https://the80smoviesapp.herokuapp.com/movies');
       const responseData = await response.json();
-      console.log(responseData);
       const loadedMovies = [];
       for (const key in responseData) {
         loadedMovies.push({
@@ -24,13 +25,18 @@ function App() {
     fetchMovies();
   }, []);
 
+  const movieClickHandler = movie => {
+    setSelectedMovie(movie);
+  };
+
   return (
     <>
-      <MovieList movies={movies} />
+      {selectedMovie && <MovieView movie={selectedMovie} />}
+      {!selectedMovie && <MovieList movies={movies} onMovieClick={movieClickHandler} />}
     </>
   );
 }
 
 export default App;
 
-// TO DO: remove map function from here, put it in the MovieList comonent! Check the Expense tracker app for example.
+// TO DO: event handler undefined when it comes to the button in the child component
