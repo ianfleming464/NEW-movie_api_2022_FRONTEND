@@ -1,6 +1,5 @@
 const MovieView = ({ movie }) => {
-  console.log(movie);
-  return <></>;
+  return <>{movie.title}</>;
 };
 
 export default MovieView;

@@ -1,7 +1,7 @@
 import { Button, Card } from 'react-bootstrap';
 import './Movie.css';
 
-const Movie = ({ image, title, description, onMovieClick }) => {
+const Movie = ({ movie, id, title, description, genre, image, onMovieClick }) => {
   return (
     <div>
       <Card className='movie-card'>
@@ -9,7 +9,10 @@ const Movie = ({ image, title, description, onMovieClick }) => {
         <Card.Body className='d-flex flex-column'>
           <Card.Title className='movie-title text-center'>{title}</Card.Title>
           <Card.Text className='movie-description text-justify'>{description}</Card.Text>
-          <Button onClick={() => onMovieClick()} className='mt-auto' variant='outline-secondary'>
+          <Button
+            onClick={() => onMovieClick(movie)}
+            className='mt-auto'
+            variant='outline-secondary'>
             Open
           </Button>
         </Card.Body>

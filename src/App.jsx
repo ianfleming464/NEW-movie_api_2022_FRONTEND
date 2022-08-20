@@ -4,7 +4,7 @@ import MovieView from './components/Movies/MovieView';
 
 function App() {
   const [movies, setMovies] = useState([]);
-  const [selectedMovie, setSelectedMovie] = useState('');
+  const [selectedMovie, setSelectedMovie] = useState(null);
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -39,4 +39,5 @@ function App() {
 
 export default App;
 
-// TO DO: event handler undefined when it comes to the button in the child component
+// TO DO: complete MovieView component using a Bootstrap Media card object. Build the button
+// to switch between the movie view component and the main view, then i can move on to exercise 4

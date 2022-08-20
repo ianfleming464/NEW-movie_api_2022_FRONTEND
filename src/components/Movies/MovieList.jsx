@@ -10,11 +10,13 @@ const MovieList = ({ movies, onMovieClick }) => {
           {movies.map(movie => (
             <Col key={movie.id} xs={6} md={3}>
               <Movie
+                movie={movie} // a full movie object
+                id={movie.id}
                 title={movie.title}
                 description={movie.description}
                 genre={movie.genre}
                 image={movie.image}
-                onMovieClick={onMovieClick}
+                onMovieClick={movie => onMovieClick(movie)}
               />
             </Col>
           ))}
