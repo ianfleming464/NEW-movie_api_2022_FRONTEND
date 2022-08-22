@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import MovieList from './components/Movies/MovieList';
 import MovieView from './components/Movies/MovieView';
+import NavbarComponent from './components/Layout/NavbarComponent';
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -34,6 +35,7 @@ function App() {
 
   return (
     <>
+      {/* <NavbarComponent /> */}
       {selectedMovie && <MovieView movie={selectedMovie} />}
       {!selectedMovie && <MovieList movies={movies} onMovieClick={movieClickHandler} />}
     </>
