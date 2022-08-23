@@ -53,4 +53,4 @@ function App() {
 
 export default App;
 
-// TO DO: decide regarding state. Boolean becomes a string, following instructions. There must be a better way. Practically speaking, for now, try the exercise. Implement at least a dummy registration mode.
+// TO DO: decide regarding state. Boolean becomes a string, following instructions. There must be a better way. Practically speaking, for now, try the exercise. Implement at least a dummy registration mode. ALSO fix the name of the login folder. Too many ///s
