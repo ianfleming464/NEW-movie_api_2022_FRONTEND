@@ -1,17 +1,19 @@
 import { useState, useEffect } from 'react';
 import MovieList from './components/Movies/MovieList';
 import MovieView from './components/Movies/MovieView';
-import LoginView from './components/Register/Login/LoginView';
+import LoginView from './components/Login/Register/LoginView';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
+  // const [user, setUser] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     const fetchMovies = async () => {
       const response = await fetch('https://the80smoviesapp.herokuapp.com/movies');
       const responseData = await response.json();
+
       const loadedMovies = [];
       for (const key in responseData) {
         loadedMovies.push({
@@ -33,9 +35,14 @@ function App() {
     setSelectedMovie(movie);
   };
 
+  const onLoggedIn = user => {
+    setIsLoggedIn(user);
+  };
+
   return (
     <>
-      {!isLoggedIn && <LoginView />}
+      {/* {!user && <LoginView onLoggedIn={user => onLoggedIn(user)} />} */}
+      {!isLoggedIn && <LoginView onLoggedIn={user => onLoggedIn(user)} />}
       {selectedMovie && <MovieView movie={selectedMovie} />}
       {isLoggedIn && !selectedMovie && (
         <MovieList movies={movies} onMovieClick={movieClickHandler} />
@@ -46,6 +53,4 @@ function App() {
 
 export default App;
 
-// TO DO: complete MovieView component using an alternative to a Bootstrap Media card object. Build the button
-// to switch between the movie view component and the main view, then i can move on to exercise 4
-// https://www.tutorialrepublic.com/twitter-bootstrap-tutorial/bootstrap-media-objects.php
+// TO DO: decide regarding state. Boolean becomes a string, following instructions. There must be a better way. Practically speaking, for now, try the exercise. Implement at least a dummy registration mode.
