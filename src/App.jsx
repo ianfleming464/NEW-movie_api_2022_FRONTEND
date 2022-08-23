@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import MovieList from './components/Movies/MovieList';
 import MovieView from './components/Movies/MovieView';
-import NavbarComponent from './components/Layout/NavbarComponent';
+import LoginView from './components/Register/Login/LoginView';
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
 
-  console.group(selectedMovie);
   useEffect(() => {
     const fetchMovies = async () => {
       const response = await fetch('https://the80smoviesapp.herokuapp.com/movies');
@@ -35,9 +35,11 @@ function App() {
 
   return (
     <>
-      {/* <NavbarComponent /> */}
+      {!isLoggedIn && <LoginView />}
       {selectedMovie && <MovieView movie={selectedMovie} />}
-      {!selectedMovie && <MovieList movies={movies} onMovieClick={movieClickHandler} />}
+      {isLoggedIn && !selectedMovie && (
+        <MovieList movies={movies} onMovieClick={movieClickHandler} />
+      )}
     </>
   );
 }
