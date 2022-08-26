@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import MovieList from './components/Movies/MovieList';
 import MovieView from './components/Movies/MovieView';
-import LoginView from './components/Login/Register/LoginView';
+// import LoginView from './components/Login-Registration/LoginView';
+import RegistrationView from './components/Login-Registration/RegistrationView';
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -41,8 +42,8 @@ function App() {
 
   return (
     <>
-      {/* {!user && <LoginView onLoggedIn={user => onLoggedIn(user)} />} */}
-      {!isLoggedIn && <LoginView onLoggedIn={user => onLoggedIn(user)} />}
+      {!isLoggedIn && <RegistrationView />}
+      {/* {!isLoggedIn && <LoginView onLoggedIn={user => onLoggedIn(user)} />} */}
       {selectedMovie && <MovieView movie={selectedMovie} />}
       {isLoggedIn && !selectedMovie && (
         <MovieList movies={movies} onMovieClick={movieClickHandler} />
@@ -53,4 +54,4 @@ function App() {
 
 export default App;
 
-// TO DO: decide regarding state. Boolean becomes a string, following instructions. There must be a better way. Practically speaking, for now, try the exercise. Implement at least a dummy registration mode. ALSO fix the name of the login folder. Too many ///s
+// TO DO: decide regarding state. Boolean becomes a string, falsy (literally false) becomes truthy, following instructions. POST request usnig the fecth api. How to send the relevant info via fetch to the back? Headers, body?
