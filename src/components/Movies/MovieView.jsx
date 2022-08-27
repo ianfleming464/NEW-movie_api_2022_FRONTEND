@@ -1,7 +1,7 @@
 import './MovieView.css';
 import { Button } from 'react-bootstrap';
 
-const MovieView = ({ movie }) => {
+const MovieView = ({ movie, previous }) => {
   const { id, title, description, genre, image, director, year } = movie;
   console.log(director);
   return (
@@ -19,7 +19,7 @@ const MovieView = ({ movie }) => {
 
           <p className='view-card-description'>{description}</p>
 
-          <Button className='mt-auto' variant='outline-secondary'>
+          <Button className='mt-auto' variant='outline-secondary' onClick={() => previous(movie)}>
             {' '}
             <i className='fas fa-play'></i> Back to Main View
           </Button>
