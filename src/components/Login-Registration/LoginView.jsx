@@ -2,8 +2,6 @@ import { Button, Form, Row, Col, Container } from 'react-bootstrap';
 import { useState } from 'react';
 import './LoginView.css';
 
-// PLACEHOLDER LOGIN FORM
-
 const LoginView = props => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');

@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import MovieList from './components/Movies/MovieList';
 import MovieView from './components/Movies/MovieView';
 import LoginView from './components/Login-Registration/LoginView';
-// import RegistrationView from './components/Login-Registration/RegistrationView';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+
+// import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -43,7 +43,6 @@ function App() {
 
   return (
     <>
-      {/* {!isLoggedIn && <RegistrationView />} */}
       {!isLoggedIn && <LoginView onLoggedIn={user => onLoggedIn(user)} />}
       {selectedMovie && (
         <MovieView movie={selectedMovie} previous={movie => movieClickHandler(!movie)} />
