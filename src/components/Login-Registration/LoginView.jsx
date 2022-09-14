@@ -21,7 +21,7 @@ const LoginView = props => {
           <Container className='login-container'>
             <h3 className='text-center'>The 80s Movies App - Login </h3>
             <Form>
-              <Form.Group controlId='formBasicUsername'>
+              <Form.Group className='mb-3' controlId='formBasicUsername'>
                 <Form.Label>Username</Form.Label>
                 <Form.Control
                   type='text'
@@ -30,7 +30,7 @@ const LoginView = props => {
                 />
               </Form.Group>
 
-              <Form.Group controlId='formBasicPassword'>
+              <Form.Group className='mb-3' controlId='formBasicPassword'>
                 <Form.Label>Password</Form.Label>
                 <Form.Control
                   type='password'
@@ -46,7 +46,7 @@ const LoginView = props => {
                   onClick={handleSubmit}>
                   Login
                 </Button>
-                <Button variant='link' type='submit'>
+                <Button onClick={props.onClick} variant='link' type='submit'>
                   Sign up!
                 </Button>
               </div>

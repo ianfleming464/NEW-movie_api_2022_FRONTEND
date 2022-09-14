@@ -2,13 +2,15 @@ import { useState, useEffect } from 'react';
 import MovieList from './components/Movies/MovieList';
 import MovieView from './components/Movies/MovieView';
 import LoginView from './components/Login-Registration/LoginView';
+import RegistrationView from './components/Login-Registration/RegistrationView';
 
 // import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 function App() {
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
-  // const [user, setUser] = useState(null);
+  // newUser - check if there is a brand new unregistered user. Initially false!
+  const [newUser, setNewUser] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
@@ -41,9 +43,25 @@ function App() {
     setIsLoggedIn(user);
   };
 
+  const onRegistration = () => {
+    setNewUser(true);
+  };
+
+  const alreadyRegistered = () => {
+    setNewUser(false);
+  };
+
   return (
     <>
-      {!isLoggedIn && <LoginView onLoggedIn={user => onLoggedIn(user)} />}
+      {!isLoggedIn && !newUser && (
+        <LoginView onClick={() => onRegistration()} onLoggedIn={user => onLoggedIn(user)} />
+      )}
+      {!isLoggedIn && newUser && (
+        <RegistrationView
+          onClick={() => alreadyRegistered()}
+          onLoggedIn={user => onLoggedIn(user)}
+        />
+      )}
       {selectedMovie && (
         <MovieView movie={selectedMovie} previous={movie => movieClickHandler(!movie)} />
       )}
@@ -56,4 +74,4 @@ function App() {
 
 export default App;
 
-// TO DO: decide regarding state. Boolean becomes a string, falsy (literally false) becomes truthy, following instructions. POST request usnig the fetch api. How to send the relevant info via fetch to the back? Headers, body?
+// TO DO: decide regarding state. Boolean becomes a string, falsy (literally false) becomes truthy, following instructions. POST request using the fetch api. How to send the relevant info via fetch to the back? Headers, body?
